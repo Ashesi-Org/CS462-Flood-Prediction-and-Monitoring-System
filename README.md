@@ -45,6 +45,22 @@ Follow these steps to set up the Flood Prediction and Monitoring System locally:
 
 5. **Access the App**:
     - Visit `http://localhost:5000` to view and interact with the Flood Prediction and Monitoring System.
+  
+
+
+## Project Management 
+We are using [clickUp] https://app.clickup.com/9012511042/v/b/4-90122116904-2 as our project mangement tool to organize task and track progress. Below are details of the setup:
+### Task Board Overview
+![Task Board Overview]
+<img width="954" alt="image" src="https://github.com/user-attachments/assets/ad065aa5-bacf-41fe-a9c9-5bb010f5ed1d">
+
+### Workflow  
+Our workflow follows the Agile methodology, divided into milestones to track progress.  
+1. **Milestone Planning**: Each milestone focuses on a specific deliverable. Tasks are created, assigned to team members, and tracked in the project management tool.  
+2. **Daily Updates**: Standups via [communication tool, e.g., whatsapp] to sync on progress.  
+3. **Task Tracking**: We use ClickUp boards to maintain task progress from "To Do" to "In Progress" and "Done."
+
+
 
 ## 🛠️ Technologies Used
 
@@ -83,6 +99,7 @@ Flood predictions are made using machine learning algorithms trained on a variet
 - **Real Estate Developer**: Developers can assess the flood risk of an area before investing.
 - **Government Agency**: Authorities can use the system to monitor high-risk zones and allocate resources effectively.
 - **Local Residents**: Individuals can stay informed about the flood risk level in their area, helping them take precautionary measures.
+
 
 ## 👥 Contributing
 
