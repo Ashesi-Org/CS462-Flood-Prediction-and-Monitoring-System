@@ -1,0 +1,9 @@
+{
+    "name": "my/app",
+    "description": "Weatherman ",
+    "require": {
+      "php": "^7.3 || ^8.0",
+      "monolog/monolog": "^2.0"
+    }
+  }
+  
