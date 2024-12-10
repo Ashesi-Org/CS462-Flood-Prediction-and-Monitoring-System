@@ -9,8 +9,8 @@ from scipy.stats import norm
 API_KEY = "105ce953cde35584a8658700b5a46803"
 
 # Load the scaler and model
-scaler_path = "scaler.pkl"
-model_path = "logreg_model.pkl"
+scaler_path = "models/scaler.pkl"
+model_path = "models/logreg_model.pkl"
 
 with open(scaler_path, "rb") as f:
     scaler = pickle.load(f)

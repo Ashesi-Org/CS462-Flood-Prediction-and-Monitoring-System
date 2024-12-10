@@ -1,6 +1,10 @@
 import requests,json
+from dotenv import load_dotenv
+import os
 
-API_KEY="FxlQqX8v.mqD9LbgmPpNThKMvi6aDmCjua1NiVl87"
+load_dotenv()
+
+API_KEY=os.getenv("ROBUST_API_KEY")
 URL="https://payload.vextapp.com/hook/O0WKVBXQE4/catch/user"
 
 headers={"Content-Type":"application/json","ApiKey":f"Api-Key {API_KEY}"}
