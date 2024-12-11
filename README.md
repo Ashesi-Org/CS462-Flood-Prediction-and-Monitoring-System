@@ -87,6 +87,7 @@ Follow these steps to set up the **Flood Prediction and Monitoring System** loca
 
 ## **🧪 Testing**
 
+## **🧪 Testing**
 
 We performed rigorous testing to ensure the application runs smoothly and meets all functional requirements:
 
@@ -98,25 +99,29 @@ We performed rigorous testing to ensure the application runs smoothly and meets 
 Here are some snapshots of the testing process:
 
 1. **Qodo Gen Test Suite**:  
-   ![Qodo Gen Test Suite](images/qodo_test_suite.jpg) 
-
-   ![Qodo Gen Test Suite](images/qodo_test_suite2.jpg)
-
-   ![Qodo Gen Test Suite](images/qodo_test_suite3.jpg)  
+   ![Qodo Gen Test Suite](images/qodo_gen_test_suite.jpg)  
    *Detailed output from the Qodo Gen Test Suite highlighting successful API responses.*
 
 2. **Postman Testing**:  
-   ![Postman Testing](images/postman_api_testing.jpg)  
+   ![Postman Testing](images/postman_testing.jpg)  
    *Validation of API endpoints with expected responses and latency checks.*
 
+3. **Container Monitoring**:  
+   ![Container Monitoring](images/container_monitoring.jpg)  
+   *Snapshot of the running Docker containers for the application.*
+
+4. **Prometheus Metrics**:  
+   ![Prometheus Metrics](images/prometheus_metrics.jpg)  
+   *Real-time monitoring of application performance metrics using Prometheus.*
 
 
 ## **📋 Limitations and Future Improvements**
+
 Latency: There is some latency when retrieving API responses. Future work will involve optimizing API response times to ensure seamless user experience.
 Expanded Data Sources: Adding more diverse data sources for better prediction accuracy.
 Real-Time Notifications: Implementing real-time alert systems for high-risk flood zones.
 
-## **📊 Data Sources and Collection**
+## ** 📊 Data Sources and Collection**
 The system relies on multiple data sources to provide accurate flood predictions:
 
 Weather Data: Real-time and historical rainfall data from government agencies and APIs like OpenWeather or Meteostat.
