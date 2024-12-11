@@ -1,4 +1,3 @@
-Here’s the updated and professional version of the `README.md` file with detailed content and bold headings for better readability:
 
 ---
 
