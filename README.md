@@ -87,27 +87,55 @@ Follow these steps to set up the **Flood Prediction and Monitoring System** loca
 
 ## **🧪 Testing**
 
+## **🧪 Testing**
+
 We performed rigorous testing to ensure the application runs smoothly and meets all functional requirements:
 
-Testing Suite: Utilized the Qodo Gen Test Suite for automated tests of APIs and containerized services.
-API Testing: Conducted thorough API response testing using Postman to validate endpoints and ensure accurate data handling.
-📋 Limitations and Future Improvements
+- **Testing Suite**: Utilized the **Qodo Gen Test Suite** for automated tests of APIs and containerized services.
+- **API Testing**: Conducted thorough API response testing using **Postman** to validate endpoints and ensure accurate data handling.
+
+### **Testing Results**
+
+Here are some snapshots of the testing process:
+
+1. **Qodo Gen Test Suite**:  
+   ![Qodo Gen Test Suite](images/qodo_gen_test_suite.jpg)  
+   *Detailed output from the Qodo Gen Test Suite highlighting successful API responses.*
+
+2. **Postman Testing**:  
+   ![Postman Testing](images/postman_testing.jpg)  
+   *Validation of API endpoints with expected responses and latency checks.*
+
+3. **Container Monitoring**:  
+   ![Container Monitoring](images/container_monitoring.jpg)  
+   *Snapshot of the running Docker containers for the application.*
+
+4. **Prometheus Metrics**:  
+   ![Prometheus Metrics](images/prometheus_metrics.jpg)  
+   *Real-time monitoring of application performance metrics using Prometheus.*
+
+
+## **📋 Limitations and Future Improvements**
+
 Latency: There is some latency when retrieving API responses. Future work will involve optimizing API response times to ensure seamless user experience.
 Expanded Data Sources: Adding more diverse data sources for better prediction accuracy.
 Real-Time Notifications: Implementing real-time alert systems for high-risk flood zones.
-📊 Data Sources and Collection
+
+## ** 📊 Data Sources and Collection**
 The system relies on multiple data sources to provide accurate flood predictions:
 
 Weather Data: Real-time and historical rainfall data from government agencies and APIs like OpenWeather or Meteostat.
 Flood History: Data on past flooding events in the targeted regions.
 Geographical Information: Data on elevation, topography, and drainage systems from sources like Google Maps API or GIS databases.
-📈 Machine Learning and Modeling
+
+## ** 📈 Machine Learning and Modeling**
 Flood predictions are made using machine learning algorithms trained on a variety of flood-related environmental data. Models include:
 
 Logistic Regression: Used for binary classification of flood risk.
 Random Forest: Used for assessing flood risk probability based on environmental factors.
 Recurrent Neural Network (RNN): For time-series forecasting of rainfall and its potential impacts on flood risks.
-👥 Contributing
+
+## **👥 Contributing**
 We welcome contributions to improve the Flood Prediction and Monitoring System. Here's how you can help:
 
 1. **Fork the Repository**: Create a personal fork of the repository.
