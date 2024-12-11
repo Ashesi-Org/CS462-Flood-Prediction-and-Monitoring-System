@@ -13,7 +13,7 @@ API_KEY_2 = os.getenv("ROBUST_API_KEY")
 API_KEY = os.getenv("WEATHER_API_KEY")
 
 ROBUST_API_URL = "https://payload.vextapp.com/hook/O0WKVBXQE4/catch/user"
-HEADERS = {"Content-Type": "application/json", "ApiKey": f"Api-Key {API_KEY}"}
+HEADERS = {"Content-Type": "application/json", "ApiKey": f"Api-Key {API_KEY_2}"}
 
 
 
@@ -99,26 +99,56 @@ def submit_evaluation():
         "average_score": average_score,
         "flood_risk": flood_risk
     })
-
 @app.route("/comprehensive-analysis")
 def comprehensive_analysis():
     # Payload for the API
     data = {
-        "payload": "Hey there I live in Kasoa nyanyano, tell me whether there would be flood today"
+        "payload": "Hey there I live in Kasoa Nyanyano, tell me whether there would be flood today"
     }
+
     try:
         # Call the robust API
         response = requests.post(ROBUST_API_URL, headers=HEADERS, json=data)
-        response.raise_for_status()
-        analysis_data = response.json()  # Assume the API returns JSON data
 
-        # Pass the API results to the template
-        return render_template("robust_analysis.html", results=analysis_data)
+        # Debugging: Print status code and response content for troubleshooting
+        print(f"Response Status Code: {response.status_code}")
+        print(f"Response Content: {response.text}")
+
+        response.raise_for_status()  # Ensure the request is successful
+        
+        # Parse the response as JSON
+        analysis_data = response.json()
+        
+        # Debugging: Print the parsed JSON to check the structure
+        print(f"Parsed Response Data: {analysis_data}")
+
+        # Structure the analysis data into categories for the template
+        structured_data = {
+            "key_risk_factors": [],
+            "supporting_evidence": [],
+            "recommendations": [],
+            "error": None  # In case of any error, we can pass this to the template
+        }
+
+        # Check if the response contains the expected sections
+        if not analysis_data:
+            structured_data["error"] = "No data returned from the API."
+        else:
+            for factor, details in analysis_data.items():
+                if factor in ["Monsoon Intensity", "Urbanization", "Ineffective Disaster Preparedness", "Drainage Systems", "Climate Change"]:
+                    structured_data["key_risk_factors"].append({"factor": factor, "details": details})
+                elif factor == "Supporting evidence":
+                    structured_data["supporting_evidence"] = details
+                elif factor == "Recommendations":
+                    structured_data["recommendations"] = details
+
+        # Pass the structured data to the template
+        return render_template("robust_analysis.html", data=structured_data)
 
     except requests.exceptions.RequestException as e:
         # Handle API errors gracefully
-        return jsonify({"error": "Failed to fetch analysis", "details": str(e)}), 500
-
+        print(f"Error occurred: {str(e)}")  # Log the error for debugging
+        return render_template("robust_analysis.html", data={"error": f"Failed to fetch analysis: {str(e)}"}), 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001)

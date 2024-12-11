@@ -14,14 +14,18 @@ CORS(app)
 
 
 # Load the pre-trained model
-MODEL_PATH = "../models/flood_model.h5"
+MODEL_PATH = "flood_model.h5"
+# MODEL_PATH = "../models/flood_model.h5"
+
 if os.path.exists(MODEL_PATH):
     model = tf.keras.models.load_model(MODEL_PATH, custom_objects={"mse": tf.keras.losses.MeanSquaredError()})
 else:
     raise FileNotFoundError("The flood_model.h5 file was not found!")
 
 # Load the scaler
-SCALER_PATH = "../models/scaler.pkl"
+SCALER_PATH = "scaler.pkl"
+# SCALER_PATH = "../models/scaler.pkl"
+
 if os.path.exists(SCALER_PATH):
     scaler = joblib.load(SCALER_PATH)
 else:
@@ -90,4 +94,4 @@ def predict_flood():
 
 # Run the app
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
