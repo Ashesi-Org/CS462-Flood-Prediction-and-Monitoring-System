@@ -13,7 +13,7 @@ services:
     networks:
       - mynetwork
 
-  # MySQL container (for your database)
+  # MySQL container 
   db:
     image: mysql:5.7
     environment:
