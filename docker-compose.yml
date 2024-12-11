@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  web:
+    build: ./main
+    container_name: web-service
+    ports:
+      - "5002:5002"  # Web app served on port 5002
+    networks:
+      - app-network
+    depends_on:
+      - flood-prediction-api
+      - user-prediction-api
+    environment:
+      # Define additional environment variables for the web service if needed
+      - FLASK_ENV=production
+
+  flood-prediction-api:
+    image: evansjunior/flood-prediction-app:latest
+    container_name: flood-prediction-api
+    ports:
+      - "5000:5000"  # API available on port 5000
+    networks:
+      - app-network
+    environment:
+      - FLASK_ENV=production
+
+  user-prediction-api:
+    image: evansjunior/user-prediction-app:latest
+    container_name: user-prediction-api
+    ports:
+      - "5001:5001"  # Web service available on port 5001
+    networks:
+      - app-network
+    environment:
+      - FLASK_ENV=production
+
+networks:
+  app-network:
+    driver: bridge

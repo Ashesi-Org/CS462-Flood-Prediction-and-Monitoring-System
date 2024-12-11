@@ -15,8 +15,6 @@ API_KEY = os.getenv("WEATHER_API_KEY")
 ROBUST_API_URL = "https://payload.vextapp.com/hook/O0WKVBXQE4/catch/user"
 HEADERS = {"Content-Type": "application/json", "ApiKey": f"Api-Key {API_KEY_2}"}
 
-
-
 # Function to fetch weather data
 def fetch_weather_data(city):
     url = "https://api.openweathermap.org/data/2.5/weather"
@@ -75,7 +73,6 @@ def result():
         lower_bound=lower_bound,
         upper_bound=upper_bound
     )
-
 
 # Route to render the flood risk evaluation form
 @app.route("/evaluation-form", methods=["GET"])
