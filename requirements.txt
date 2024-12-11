@@ -2,3 +2,5 @@ Flask
 SQLAlchemy
 prometheus-client
 python-dotenv
+pymysql
+cryptography
