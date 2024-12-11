@@ -1,10 +1,7 @@
-global:
-  scrape_interval: 15s
-
 scrape_configs:
   - job_name: "app"
     static_configs:
       - targets: ["app:7000"]
   - job_name: "mysql"
     static_configs:
-      - targets: ["db:3306"]
+      - targets: ["mysql_exporter:9104"]
