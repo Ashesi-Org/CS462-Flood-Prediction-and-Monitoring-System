@@ -107,18 +107,16 @@
     <div class="container">
         <h1>Comprehensive Flood Risk Analysis Report</h1>
 
-        <!-- Debugging: Check if data is being passed properly -->
+        <!-- Error Handling -->
         {% if data.error %}
         <div class="error-message">
             <strong>Error:</strong> {{ data.error }}
         </div>
         {% else %}
-            <p>Data received successfully!</p>
-
             <!-- Key Risk Factors Section -->
             <div class="result-section">
                 <h2 class="section-header">Key Risk Factors</h2>
-                {% if data.key_risk_factors %}
+                {% if data.key_risk_factors and data.key_risk_factors|length > 0 %}
                     {% for factor in data.key_risk_factors %}
                         <div class="result-item">
                             <h3>{{ factor.factor }}</h3>
@@ -133,7 +131,7 @@
             <!-- Supporting Evidence Section -->
             <div class="result-section">
                 <h2 class="section-header">Supporting Evidence</h2>
-                {% if data.supporting_evidence %}
+                {% if data.supporting_evidence and data.supporting_evidence|length > 0 %}
                     <ul class="factors-list">
                         {% for item in data.supporting_evidence %}
                             <li><strong>{{ item.label }}:</strong> {{ item.value }}</li>
@@ -147,7 +145,7 @@
             <!-- Recommendations Section -->
             <div class="result-section">
                 <h2 class="section-header">Recommendations</h2>
-                {% if data.recommendations %}
+                {% if data.recommendations and data.recommendations|length > 0 %}
                     <div class="recommendations-list">
                         {% for recommendation in data.recommendations %}
                             <div class="recommendation">{{ recommendation }}</div>
@@ -161,7 +159,5 @@
 
         <a href="/" class="button">Go Back</a>
     </div>
-</body>
-</html>
 </body>
 </html>

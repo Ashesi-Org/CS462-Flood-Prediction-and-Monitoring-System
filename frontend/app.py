@@ -96,6 +96,7 @@ def submit_evaluation():
         "average_score": average_score,
         "flood_risk": flood_risk
     })
+
 @app.route("/comprehensive-analysis")
 def comprehensive_analysis():
     # Payload for the API
@@ -132,12 +133,21 @@ def comprehensive_analysis():
             structured_data["error"] = "No data returned from the API."
         else:
             for factor, details in analysis_data.items():
-                if factor in ["Monsoon Intensity", "Urbanization", "Ineffective Disaster Preparedness", "Drainage Systems", "Climate Change"]:
+                factor_lower = factor.lower()
+                if factor_lower in ["monsoon intensity", "urbanization", "ineffective disaster preparedness", "drainage systems", "climate change"]:
                     structured_data["key_risk_factors"].append({"factor": factor, "details": details})
-                elif factor == "Supporting evidence":
+                elif factor_lower == "supporting evidence":
                     structured_data["supporting_evidence"] = details
-                elif factor == "Recommendations":
+                elif factor_lower == "recommendations":
                     structured_data["recommendations"] = details
+
+        # Fallbacks for empty sections
+        if not structured_data["key_risk_factors"]:
+            structured_data["key_risk_factors"].append({"factor": "No significant factors found", "details": "Please verify the input or API logic."})
+        if not structured_data["supporting_evidence"]:
+            structured_data["supporting_evidence"].append({"label": "No evidence available", "value": "N/A"})
+        if not structured_data["recommendations"]:
+            structured_data["recommendations"].append("No recommendations available.")
 
         # Pass the structured data to the template
         return render_template("robust_analysis.html", data=structured_data)

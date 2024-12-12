@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from prometheus_client import Counter, generate_latest
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker # type: ignore
 from models import Base, UserHistory
 import os
 
