@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  user-prediction-api:
+    build:
+      context: ./frontend  # path to the frontend folder
+    container_name: user-prediction-api
+    ports:
+      - "5001:5001"  # Exposing port 5001
+    networks:
+      - app-network
+    environment:
+      - FLASK_ENV=production
+
+  localmodelapi:
+    build:
+      context: ./apis/localmodelapi  # path to the localmodelapi folder
+    container_name: localmodelapi
+    ports:
+      - "5000:5000"  # Exposing port 5000
+    networks:
+      - app-network
+    environment:
+      - FLASK_ENV=production
+
+  main:
+    build:
+      context: ./main  # path to the main folder
+    container_name: main
+    ports:
+      - "5002:5002"  # Exposing port 5002
+    depends_on:
+      - user-prediction-api  # Ensures main starts after user-prediction-api is up
+      - localmodelapi  # Ensures main starts after localmodelapi is up
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

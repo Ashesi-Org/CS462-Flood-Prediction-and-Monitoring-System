@@ -1,0 +1,7 @@
+scrape_configs:
+  - job_name: "app"
+    static_configs:
+      - targets: ["app:7000"]
+  - job_name: "mysql"
+    static_configs:
+      - targets: ["mysql_exporter:9104"]

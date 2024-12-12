@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Prediction & Monitoring System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .search-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .search-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background-color: #2980b9;
+        }
+
+        .results-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .risk-level {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .risk-high {
+            background-color: #ffdddd;
+            color: #ff0000;
+        }
+
+        .risk-medium {
+            background-color: #ffffcc;
+            color: #ff9900;
+        }
+
+        .risk-low {
+            background-color: #ddffdd;
+            color: #008000;
+        }
+
+        .risk-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .recommended-actions {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 600px) {
+            .risk-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .evaluation-button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1em;
+        }
+
+        .evaluation-button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Flood Prediction & Monitoring System</h1>
+        </div>
+
+        <div class="search-section">
+            <input type="text" id="location-input" class="search-input" placeholder="Enter Location (e.g., Accra Central)">
+            <button id="search-button" class="search-button">Fetch Weather Data</button>
+            <!-- <button id="predict-button" class="search-button" style="margin-top: 10px;">Predict Flood Risk</button> -->
+        </div>
+
+        <div id="results-section" class="results-section" style="display: none;">
+            <div id="risk-level" class="risk-level"></div>
+            <div id="weather-details"></div>
+            <!-- Add the button to navigate to flood risk evaluation form -->
+            <button id="evaluation-button" class="evaluation-button" style="display: none;" onclick="window.location.href='/evaluation-form'">
+                Proceed to Flood Risk Evaluation Form
+            </button>
+            
+        </div>
+    </div>
+
+    <script>
+        // Fetch weather data and update the page
+        document.getElementById("search-button").addEventListener("click", async () => {
+            const location = document.getElementById("location-input").value;
+
+            if (!location) {
+                alert("Please enter a location.");
+                return;
+            }
+
+            const response = await fetch(`/api/weather?location=${encodeURIComponent(location)}`);
+            if (response.ok) {
+                const data = await response.json();
+
+                // Update risk level
+                const riskElement = document.getElementById("risk-level");
+                riskElement.textContent = `Risk Level: ${data.risk_level}`;
+                riskElement.className = `risk-level risk-${data.risk_level.toLowerCase()}`;
+
+                // Update weather details
+                const weatherDetails = document.getElementById("weather-details");
+                weatherDetails.innerHTML = `
+                    <p><strong>Location:</strong> ${data.city}, ${data.country}</p>
+                    <p><strong>Temperature:</strong> ${data.temperature}°C</p>
+                    <p><strong>Weather:</strong> ${data.weather}</p>
+                    <p><strong>Risk-level:</strong> ${data.flood_probability}%</p>
+                `;
+
+                // Show results section and evaluation form button
+                document.getElementById("results-section").style.display = "block";
+                document.getElementById("evaluation-button").style.display = "block";
+            } else {
+                alert("Error fetching weather data.");
+            }
+        });
+
+        // Predict flood risk based on weather data
+        document.getElementById("predict-button").addEventListener("click", async () => {
+            const location = document.getElementById("location-input").value;
+
+            if (!location) {
+                alert("Please enter a location.");
+                return;
+            }
+
+            const response = await fetch(`/api/weather?location=${encodeURIComponent(location)}`);
+            if (response.ok) {
+                const data = await response.json();
+
+                // Simple logic to predict flood risk based on weather data
+                const floodRisk = data.flood_probability > 70 ? "High risk of flooding" : "Low risk of flooding";
+
+                alert(`Flood Prediction: ${floodRisk}`);
+            } else {
+                alert("Error fetching weather data.");
+            }
+        });
+    </script>
+</body>
+</html>
