@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: '3.8'
 
 services:
@@ -7,11 +8,46 @@ services:
     container_name: user-prediction-api
     ports:
       - "5001:5001"  # Exposing port 5001
+=======
+version: '3.9'
+
+services:
+  web:
+    build: ./main
+    container_name: web-service
+    ports:
+      - "5002:5002"  # Web app served on port 5002
+    networks:
+      - app-network
+    depends_on:
+      - flood-prediction-api
+      - user-prediction-api
+    environment:
+      # Define additional environment variables for the web service if needed
+      - FLASK_ENV=production
+
+  flood-prediction-api:
+    image: evansjunior/flood-prediction-app:latest
+    container_name: flood-prediction-api
+    ports:
+      - "5000:5000"  # API available on port 5000
     networks:
       - app-network
     environment:
       - FLASK_ENV=production
 
+  user-prediction-api:
+    image: evansjunior/user-prediction-app:latest
+    container_name: user-prediction-api
+    ports:
+      - "5001:5001"  # Web service available on port 5001
+>>>>>>> 961dd0486674fa1b4e13153aa70a2a3b6fbe0ad7
+    networks:
+      - app-network
+    environment:
+      - FLASK_ENV=production
+
+<<<<<<< HEAD
   localmodelapi:
     build:
       context: ./apis/localmodelapi  # path to the localmodelapi folder
@@ -35,6 +71,8 @@ services:
     networks:
       - app-network
 
+=======
+>>>>>>> 961dd0486674fa1b4e13153aa70a2a3b6fbe0ad7
 networks:
   app-network:
     driver: bridge
