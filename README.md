@@ -45,9 +45,17 @@ The **Flood Prediction and Monitoring System** operates by:
 We are using [ClickUp](https://app.clickup.com/9012511042/v/b/4-90122116904-2) as our project management tool to organize tasks and track progress. Below are details of the setup:
 
 ### Task Board Overview
-![Task Board Overview](images/task_board.png)
+
+![Project management](https://github.com/user-attachments/assets/132e6809-c809-490f-9543-03a1df5e8d45)
+
+
+![Project management 2](https://github.com/user-attachments/assets/4e6c8026-5515-485c-bae6-273276f94794)
+
+![WhatsApp Image 2024-12-13 at 16 00 13_caac956b](https://github.com/user-attachments/assets/6051ea6d-273f-4d7b-ad4d-979aa724981e)
+
 
 ### Workflow  
+
 Our workflow follows the Agile methodology, divided into milestones to track progress.  
 1. **Milestone Planning**: Each milestone focuses on a specific deliverable. Tasks are created, assigned to team members, and tracked in the project management tool.  
 2. **Daily Updates**: Standups via WhatsApp to sync on progress.  
@@ -77,7 +85,6 @@ Flood predictions are made using machine learning algorithms trained on a variet
 
 ## 🌩️ Robust Model and Cloud Hosting
 ![robust_model](https://github.com/user-attachments/assets/4b247b89-aad2-43f4-b0cf-549e6a42d376)
-
 
 
 ### Model Accuracy
