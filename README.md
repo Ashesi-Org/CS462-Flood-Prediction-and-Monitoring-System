@@ -118,7 +118,7 @@ The system uses a containerized infrastructure to streamline development and dep
    - `mwin7/landingpage` for the frontend interface.
    - `mwin7/backendlogin` for secure user login management.
   
-![containers](https://github.com/user-attachments/assets/7a0de5e0-b5cc-4cde-ab73-f48e2a1b520c)
+![WhatsApp Image 2024-12-13 at 16 10 40_f5af2a68](https://github.com/user-attachments/assets/61b68ebc-cf4c-4c12-8d07-d57a23c6748c)
 
 
 2. **Images Created**:
@@ -183,6 +183,7 @@ Here are some snapshots of the testing process:
 
 3. **Postman Testing**:  
  ![postman_api_testing](https://github.com/user-attachments/assets/0a73bcf1-5a64-4c18-b227-fe4a9714f390)
+
 
  ![postman](https://github.com/user-attachments/assets/35287d54-9116-4d53-b0ee-11f16d03a97c)
 
