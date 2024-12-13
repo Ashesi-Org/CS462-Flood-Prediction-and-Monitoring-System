@@ -1,3 +1,5 @@
+version: '3.9'
+
 services:
   main-frontend:
     build: ./main  # Path to the folder where your main frontend app code is stored
@@ -8,8 +10,6 @@ services:
       - flood-prediction-frontend
       - user-prediction-frontend
       - landing-page
-
-      # - user-history
       - user-history
     networks:
       - app-network
@@ -46,18 +46,18 @@ services:
     networks:
       - app-network
 
-  user-history:
-    build: ./user_history  # Path to the folder where your user history code is stored
-    container_name: user_history-app
-    ports:
-      - "7000:7000"
-    environment:
-      - DATABASE_URL=mysql+pymysql://root:6972dk@user-history-db:3306/Weatherman
-    depends_on:
-      user-history-db:
-        condition: service_healthy
-    networks:
-      - app-network
+  # user-history:
+  #   build: ./user_history  # Path to the folder where your user history code is stored
+  #   container_name: user_history-app
+  #   ports:
+  #     - "7000:7000"
+  #   environment:
+  #     - DATABASE_URL=mysql+pymysql://root:6972dk@user-history-db:3306/Weatherman
+  #   depends_on:
+  #     user-history-db:
+  #       condition: service_healthy
+  #   networks:
+  #     - app-network
 
   user-history-db:
     image: mysql:8.0
@@ -75,22 +75,15 @@ services:
     networks:
       - app-network
 
-  # main:
-  #   image: evansjunior/main:latest  # Use the image from Docker Hub or local image
-  #   container_name: main
+  # prometheus:
+  #   image: prom/prometheus
+  #   container_name: prometheus
+  #   volumes:
+  #     - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
   #   ports:
-  #     - "5002:5002"
+  #     - "9090:9090"
   #   networks:
   #     - app-network
-  prometheus:
-    image: prom/prometheus
-    container_name: prometheus
-    volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-    ports:
-      - "9090:9090"
-    networks:
-      - app-network
 
   mysql-exporter:
     image: prom/mysqld-exporter

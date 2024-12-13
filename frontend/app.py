@@ -96,6 +96,7 @@ def submit_evaluation():
         "average_score": average_score,
         "flood_risk": flood_risk
     })
+
 @app.route("/comprehensive-analysis")
 def comprehensive_analysis():
     data = {
@@ -112,8 +113,42 @@ def comprehensive_analysis():
         response.raise_for_status()
         analysis_data = response.json()
 
+<<<<<<< HEAD
         # Pass the entire response to the template
         return render_template("simplified_analysis.html", data={"response": analysis_data})
+=======
+        # Structure the analysis data into categories for the template
+        structured_data = {
+            "key_risk_factors": [],
+            "supporting_evidence": [],
+            "recommendations": [],
+            "error": None  # In case of any error, we can pass this to the template
+        }
+
+        # Check if the response contains the expected sections
+        if not analysis_data:
+            structured_data["error"] = "No data returned from the API."
+        else:
+            for factor, details in analysis_data.items():
+                factor_lower = factor.lower()
+                if factor_lower in ["monsoon intensity", "urbanization", "ineffective disaster preparedness", "drainage systems", "climate change"]:
+                    structured_data["key_risk_factors"].append({"factor": factor, "details": details})
+                elif factor_lower == "supporting evidence":
+                    structured_data["supporting_evidence"] = details
+                elif factor_lower == "recommendations":
+                    structured_data["recommendations"] = details
+
+        # Fallbacks for empty sections
+        if not structured_data["key_risk_factors"]:
+            structured_data["key_risk_factors"].append({"factor": "No significant factors found", "details": "Please verify the input or API logic."})
+        if not structured_data["supporting_evidence"]:
+            structured_data["supporting_evidence"].append({"label": "No evidence available", "value": "N/A"})
+        if not structured_data["recommendations"]:
+            structured_data["recommendations"].append("No recommendations available.")
+
+        # Pass the structured data to the template
+        return render_template("robust_analysis.html", data=structured_data)
+>>>>>>> b36831172537fc728081297df0e16a8108f2a883
 
     except requests.exceptions.RequestException as e:
         # Handle API errors gracefully
