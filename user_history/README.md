@@ -54,8 +54,6 @@ The system uses a containerized infrastructure to streamline development and dep
    - `evansjunior/flood-prediction-app:latest`: The main application image.
    - `evansjunior/user-prediction-app:latest`: The user tracking application image.
 
-      ![Architecture](images/architecture.png) 
-
 ---
 
 ## **🌐 Installation**

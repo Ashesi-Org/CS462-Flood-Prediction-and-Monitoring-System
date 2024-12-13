@@ -1,0 +1,103 @@
+digraph DetailedProjectArchitecture {
+    // General Graph Settings
+    rankdir=LR;
+    splines=ortho;
+    fontname="Arial";
+    node [shape=rectangle, style=filled, fontname="Arial", fontsize=12];
+
+    // Data Sources
+    subgraph cluster_data_sources {
+        label="Data Sources 📡";
+        style=filled;
+        color="#D6EAF8"; // Light blue-gray
+        API1 [label="🌦️ Weather API", color="#85C1E9", fontcolor="#1F618D"];
+        API2 [label="🌊 Historical Flood Data API", color="#85C1E9", fontcolor="#1F618D"];
+        Sensor [label="📟 Environmental Sensors", color="#85C1E9", fontcolor="#1F618D"];
+        WebScraper [label="🌐 Web Scraper for News Feeds", color="#85C1E9", fontcolor="#1F618D"];
+    }
+
+    // ETL Process
+    subgraph cluster_etl {
+        label="ETL Pipeline 🛠️";
+        style=filled;
+        color="#FAD7A0"; // Light orange
+        Extract [label="📥 Data Extraction", color="#F7C6A4", fontcolor="#7B5E57"];
+        Transform [label="🔄 Data Transformation", color="#F7C6A4", fontcolor="#7B5E57"];
+        Load [label="📤 Data Loading to DB", color="#F7C6A4", fontcolor="#7B5E57"];
+    }
+
+    // Databases
+    subgraph cluster_databases {
+        label="Data Storage 💾";
+        style=filled;
+        color="#D5DBDB"; // Light gray
+        RawDB [label="📂 Raw Data Storage", color="#AAB7B8", fontcolor="#4D5656"];
+        TransformedDB [label="📊 Transformed Data Warehouse", color="#AAB7B8", fontcolor="#4D5656"];
+        Cache [label="⚡ Redis Cache Layer", color="#AAB7B8", fontcolor="#4D5656"];
+    }
+
+    // Data Processing and Analytics
+    subgraph cluster_analytics {
+        label="Analytics & Processing 🔍";
+        style=filled;
+        color="#D4E6F1"; // Light blue
+        Preprocess [label="🧪 Data Preprocessing", color="#AED6F1", fontcolor="#1A5276"];
+        FeatureEng [label="📐 Feature Engineering", color="#AED6F1", fontcolor="#1A5276"];
+        ModelTraining [label="🏋️ Model Training", color="#AED6F1", fontcolor="#1A5276"];
+        RealTimeInference [label="⚙️ Real-time Inference Engine", color="#AED6F1", fontcolor="#1A5276"];
+    }
+
+    // Machine Learning Models
+    subgraph cluster_ml {
+        label="Machine Learning Models 🤖";
+        style=filled;
+        color="#E8DAEF"; // Light purple
+        Model1 [label="🌊 Flood Prediction Model", color="#D2B4DE", fontcolor="#6C3483"];
+        Model2 [label="🚨 Anomaly Detection Model", color="#D2B4DE", fontcolor="#6C3483"];
+        Model3 [label="📉 Impact Assessment Model", color="#D2B4DE", fontcolor="#6C3483"];
+    }
+
+    // Visualization and Reporting
+    subgraph cluster_visualization {
+        label="Visualization & Reporting 📊";
+        style=filled;
+        color="#FCF3CF"; // Light yellow
+        Dashboard [label="📋 User Dashboard", color="#F9E79F", fontcolor="#7D6608"];
+        Reporting [label="📝 Reporting Tools", color="#F9E79F", fontcolor="#7D6608"];
+        Alerts [label="🔔 Alert & Notification System", color="#F9E79F", fontcolor="#7D6608"];
+    }
+
+    // Connections
+    // Data Sources to ETL
+    API1 -> Extract;
+    API2 -> Extract;
+    Sensor -> Extract;
+    WebScraper -> Extract;
+
+    // ETL to Databases
+    Extract -> Transform;
+    Transform -> Load;
+    Load -> RawDB;
+    Transform -> TransformedDB;
+
+    // Databases to Analytics
+    TransformedDB -> Preprocess;
+    Cache -> RealTimeInference;
+    Preprocess -> FeatureEng;
+    FeatureEng -> ModelTraining;
+    FeatureEng -> RealTimeInference;
+
+    // Analytics to ML Models
+    ModelTraining -> Model1;
+    ModelTraining -> Model2;
+    ModelTraining -> Model3;
+    RealTimeInference -> Model1;
+    RealTimeInference -> Model2;
+
+    // ML Models to Visualization
+    Model1 -> Dashboard;
+    Model2 -> Reporting;
+    Model3 -> Alerts;
+    Dashboard -> Alerts;
+    Reporting -> Dashboard;
+}
