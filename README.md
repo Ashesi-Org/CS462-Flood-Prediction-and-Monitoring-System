@@ -49,7 +49,13 @@ We are using [ClickUp](https://app.clickup.com/9012511042/v/b/4-90122116904-2) a
 ![Project management](https://github.com/user-attachments/assets/132e6809-c809-490f-9543-03a1df5e8d45)
 
 
+
+
+
 ![Project management 2](https://github.com/user-attachments/assets/4e6c8026-5515-485c-bae6-273276f94794)
+
+
+
 
 ![WhatsApp Image 2024-12-13 at 16 00 13_caac956b](https://github.com/user-attachments/assets/6051ea6d-273f-4d7b-ad4d-979aa724981e)
 
