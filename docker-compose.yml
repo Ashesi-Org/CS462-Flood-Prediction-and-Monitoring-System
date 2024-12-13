@@ -1,39 +1,95 @@
-version: '3.9'
-
 services:
-  web:
-    build: ./main
-    container_name: web-service
+  main-frontend:
+    build: ./main  # Path to the folder where your main frontend app code is stored
+    container_name: main-frontend
     ports:
-      - "5002:5002"  # Web app served on port 5002
-    networks:
-      - app-network
+      - "5002:5002"
     depends_on:
-      - flood-prediction-api
-      - user-prediction-api
-    environment:
-      # Define additional environment variables for the web service if needed
-      - FLASK_ENV=production
+      - flood-prediction-frontend
+      - user-prediction-frontend
+      - landing-page
+      # - user-history
+    networks:
+      - app-network
 
-  flood-prediction-api:
+  flood-prediction-frontend:
     image: evansjunior/flood-prediction-app:latest
-    container_name: flood-prediction-api
+    container_name: flood-prediction-frontend
     ports:
-      - "5000:5000"  # API available on port 5000
+      - "5000:5000"
     networks:
       - app-network
-    environment:
-      - FLASK_ENV=production
 
-  user-prediction-api:
+  user-prediction-frontend:
     image: evansjunior/user-prediction-app:latest
-    container_name: user-prediction-api
+    container_name: user-prediction-frontend
     ports:
-      - "5001:5001"  # Web service available on port 5001
+      - "5001:5001"
     networks:
       - app-network
+
+  landing-page:
+    image: mwin7/landingpage  # Path to the folder where your landing page code is stored
+    container_name: landing-page
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+
+  backend-page:
+    image: mwin7/backendlogin # Path to the folder where your landing page code is stored
+    container_name: backendlogin
+    ports:
+      - "8081:8081"
+    networks:
+      - app-network
+
+  user-history:
+    build: ./user_history  # Path to the folder where your user history code is stored
+    container_name: user_history-app
+    ports:
+      - "7000:7000"
     environment:
-      - FLASK_ENV=production
+      - DATABASE_URL=mysql+pymysql://root:6972dk@user-history-db:3306/Weatherman
+    depends_on:
+      user-history-db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  user-history-db:
+    image: mysql:8.0
+    container_name: user-history-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 6972dk
+      MYSQL_DATABASE: Weatherman
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  # main:
+  #   image: evansjunior/main:latest  # Use the image from Docker Hub or local image
+  #   container_name: main
+  #   ports:
+  #     - "5002:5002"
+  #   networks:
+  #     - app-network
+
+  mysql-exporter:
+    image: prom/mysqld-exporter
+    container_name: mysql-exporter
+    environment:
+      DATA_SOURCE_NAME: root:6972dk@(user-history-db:3306)/Weatherman
+    ports:
+      - "9104:9104"
+    networks:
+      - app-network
 
 networks:
   app-network:
