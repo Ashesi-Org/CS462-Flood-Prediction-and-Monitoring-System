@@ -7,7 +7,11 @@ CORS(app)  # Enable CORS
 
 # External service URLs
 FLOOD_PREDICTION_API_URL = "http://127.0.0.1:5000/predict_flood"  # Flood prediction service
+<<<<<<< HEAD
+LANDING_PAGE_URL = "http://127.0.0.1:8000/landing"  # Landing page service
+=======
 LANDING_PAGE_URL = "http://127.0.0.1:8000/"  # Landing page service
+>>>>>>> b36831172537fc728081297df0e16a8108f2a883
 USER_PREDICTION_API_URL = "http://127.0.0.1:5001/"  # User prediction service
 # USER_HISTORY_API_URL = "http://127.0.0.1:7000/user_history"  # User history service
 

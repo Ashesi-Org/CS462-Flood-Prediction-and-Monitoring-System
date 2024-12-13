@@ -1,8 +1,45 @@
+<<<<<<< HEAD
 name: Docker Compose CI/CD
+=======
+<<<<<<< HEAD
+name: Deploy Docker Compose
+=======
+name: Docker Compose CI/CD
+>>>>>>> b36831172537fc728081297df0e16a8108f2a883
+>>>>>>> 42fa128fc2baa9d0cb0a6184d0166457365ed85d
 
 on:
   push:
     branches:
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      - main  # Deploy on push to main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.AWS_SSH_PRIVATE_KEY }}  # Add your EC2 instance private key in GitHub Secrets
+
+    - name: Deploy to AWS EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no ubuntu@your-aws-public-ip << 'EOF'
+        cd /var/www/html/CS462-Flood-Prediction-and-Monitoring-System  # Replace with your actual path
+        git fetch origin
+        git reset --hard origin/main
+        docker-compose pull  # Update Docker images
+        docker-compose up -d --build  # Recreate containers
+        EOF
+=======
+>>>>>>> 42fa128fc2baa9d0cb0a6184d0166457365ed85d
       - main
 
 jobs:
@@ -34,3 +71,7 @@ jobs:
             --name flood-prediction \
             --image <your-acr-name>.azurecr.io/main-frontend:latest \
             --ports 5002
+<<<<<<< HEAD
+=======
+>>>>>>> b36831172537fc728081297df0e16a8108f2a883
+>>>>>>> 42fa128fc2baa9d0cb0a6184d0166457365ed85d

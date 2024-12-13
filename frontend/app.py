@@ -99,12 +99,16 @@ def submit_evaluation():
 
 @app.route("/comprehensive-analysis")
 def comprehensive_analysis():
+<<<<<<< HEAD
     # Payload for the API
+=======
+>>>>>>> 42fa128fc2baa9d0cb0a6184d0166457365ed85d
     data = {
         "payload": "Hey there I live in Kasoa Nyanyano, tell me whether there would be flood today"
     }
 
     try:
+<<<<<<< HEAD
         # Call the robust API
         response = requests.post(ROBUST_API_URL, headers=HEADERS, json=data)
 
@@ -120,6 +124,21 @@ def comprehensive_analysis():
         # Debugging: Print the parsed JSON to check the structure
         print(f"Parsed Response Data: {analysis_data}")
 
+=======
+        # Call the API
+        response = requests.post(ROBUST_API_URL, headers=HEADERS, json=data)
+        print(f"Response Status Code: {response.status_code}")
+        print(f"Response Content: {response.text}")
+
+        # Ensure the request was successful
+        response.raise_for_status()
+        analysis_data = response.json()
+
+<<<<<<< HEAD
+        # Pass the entire response to the template
+        return render_template("simplified_analysis.html", data={"response": analysis_data})
+=======
+>>>>>>> 42fa128fc2baa9d0cb0a6184d0166457365ed85d
         # Structure the analysis data into categories for the template
         structured_data = {
             "key_risk_factors": [],
@@ -151,11 +170,22 @@ def comprehensive_analysis():
 
         # Pass the structured data to the template
         return render_template("robust_analysis.html", data=structured_data)
+<<<<<<< HEAD
 
     except requests.exceptions.RequestException as e:
         # Handle API errors gracefully
         print(f"Error occurred: {str(e)}")  # Log the error for debugging
         return render_template("robust_analysis.html", data={"error": f"Failed to fetch analysis: {str(e)}"}), 500
 
+=======
+>>>>>>> b36831172537fc728081297df0e16a8108f2a883
+
+    except requests.exceptions.RequestException as e:
+        # Handle API errors gracefully
+        error_message = f"Failed to fetch analysis: {str(e)}"
+        print(error_message)  # Log for debugging
+        return render_template("simplified_analysis.html", data={"error": error_message}), 500
+    
+>>>>>>> 42fa128fc2baa9d0cb0a6184d0166457365ed85d
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001)
