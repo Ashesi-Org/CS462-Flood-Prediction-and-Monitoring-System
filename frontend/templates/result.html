@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Risk Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .confidence-interval {
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background: #3498db;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+
+        .button.secondary {
+            background: #2ecc71; /* Green for the second button */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Flood Risk Prediction</h1>
+        <p>Flood Probability: <strong>{{ flood_probability | round(2) }}</strong></p>
+        <p class="confidence-interval">
+            Confidence Interval: {{ lower_bound | round(2) }} - {{ upper_bound | round(2) }}
+        </p>
+        <a href="/" class="button">Go Back</a>
+        <a href="/comprehensive-analysis" class="button secondary">Get a More Comprehensive Analysis from Our Robust Models</a>
+    </div>
+</body>
+</html>

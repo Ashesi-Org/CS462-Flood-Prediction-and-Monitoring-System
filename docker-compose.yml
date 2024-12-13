@@ -1,0 +1,107 @@
+services:
+  main-frontend:
+    build: ./main  # Path to the folder where your main frontend app code is stored
+    container_name: main-frontend
+    ports:
+      - "5002:5002"
+    depends_on:
+      - flood-prediction-frontend
+      - user-prediction-frontend
+      - landing-page
+
+      # - user-history
+      - user-history
+    networks:
+      - app-network
+
+  flood-prediction-frontend:
+    image: evansjunior/flood-prediction-app:latest
+    container_name: flood-prediction-frontend
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+
+  user-prediction-frontend:
+    image: evansjunior/user-prediction-app:latest
+    container_name: user-prediction-frontend
+    ports:
+      - "5001:5001"
+    networks:
+      - app-network
+
+  landing-page:
+    image: mwin7/landingpage  # Path to the folder where your landing page code is stored
+    container_name: landing-page
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+
+  backend-page:
+    image: mwin7/backendlogin # Path to the folder where your landing page code is stored
+    container_name: backendlogin
+    ports:
+      - "8081:8081"
+    networks:
+      - app-network
+
+  user-history:
+    build: ./user_history  # Path to the folder where your user history code is stored
+    container_name: user_history-app
+    ports:
+      - "7000:7000"
+    environment:
+      - DATABASE_URL=mysql+pymysql://root:6972dk@user-history-db:3306/Weatherman
+    depends_on:
+      user-history-db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  user-history-db:
+    image: mysql:8.0
+    container_name: user-history-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 6972dk
+      MYSQL_DATABASE: Weatherman
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  # main:
+  #   image: evansjunior/main:latest  # Use the image from Docker Hub or local image
+  #   container_name: main
+  #   ports:
+  #     - "5002:5002"
+  #   networks:
+  #     - app-network
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - app-network
+
+  mysql-exporter:
+    image: prom/mysqld-exporter
+    container_name: mysql-exporter
+    environment:
+      DATA_SOURCE_NAME: root:6972dk@(user-history-db:3306)/Weatherman
+    ports:
+      - "9104:9104"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

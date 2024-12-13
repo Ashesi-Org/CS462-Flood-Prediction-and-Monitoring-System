@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # MySQL database service
+  db:
+    image: mysql:8
+    container_name: weatherman-db
+    environment:
+      MYSQL_ROOT_PASSWORD: KJv7!
+      MYSQL_DATABASE: weatherman_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - weatherman-network
+
+  # Flask app service
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Path to your Flask app Dockerfile
+    container_name: weatherman-web
+    environment:
+      - FLASK_APP=app.py  # Change to your app's entry point
+      - FLASK_ENV=development
+      - DATABASE_URI=mysql://user:password@db/weatherman_db  # Flask DB URI
+    ports:
+      - "80:80"  # Expose Flask app on port 5000
+    depends_on:
+      - db  
+    networks:
+      - weatherman-network
+    volumes:
+      - .:/app  
+volumes:
+  db-data:
+    driver: local
+
+networks:
+  weatherman-network:
+    driver: bridge

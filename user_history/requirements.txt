@@ -1,0 +1,8 @@
+Flask
+SQLAlchemy
+prometheus_client
+prometheus-client
+python-dotenv
+pymysql
+cryptography
+sqlalchemy==2.0.36

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Risk Evaluation Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            line-height: 1.6;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .form-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            display: block;
+        }
+
+        .form-group p {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-input[type="text"], .form-input[type="number"] {
+            font-size: 1em;
+        }
+
+        .form-input[type="radio"], .form-input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        .submit-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h2>Flood Risk Evaluation Form</h2>
+            <form action="/submit-evaluation" method="POST" id="flood-risk-form">
+       <!-- Monsoon Intensity -->
+<div class="form-group">
+    <label for="monsoon-intensity">Monsoon Intensity</label>
+    <input type="number" id="monsoon-intensity" name="Monsoon Intensity" class="form-input" placeholder="Rate the severity of monsoon rains (1-10)" required min="1" max="10" step="1">
+    <p>Rate the severity of monsoon rains in the region. A higher value indicates more severe rains.</p>
+</div>
+
+<!-- Topography Drainage -->
+<div class="form-group">
+    <label for="topography-drainage">Topography & Drainage</label>
+    <input type="number" id="topography-drainage" name="Topography Drainage" class="form-input" placeholder="Evaluate the region's natural drainage capabilities (1-10)" required min="1" max="10" step="1">
+    <p>Evaluate the region's natural drainage capabilities. A higher value means better drainage.</p>
+</div>
+
+<!-- River Management -->
+<div class="form-group">
+    <label for="river-management">River Management</label>
+    <input type="number" id="river-management" name="River Management" class="form-input" placeholder="Assess the quality of river management systems (1-10)" required min="1" max="10" step="1">
+    <p>Assess the quality of river management systems. A higher score indicates better management.</p>
+</div>
+
+<!-- Deforestation -->
+<div class="form-group">
+    <label for="deforestation">Deforestation</label>
+    <input type="number" id="deforestation" name="Deforestation" class="form-input" placeholder="Rate the impact of deforestation (1-10)" required min="1" max="10" step="1">
+    <p>Rate the impact of deforestation on the area. A higher value indicates greater impact.</p>
+</div>
+
+<!-- Urbanization -->
+<div class="form-group">
+    <label for="urbanization">Urbanization</label>
+    <input type="number" id="urbanization" name="Urbanization" class="form-input" placeholder="Rate the level of urbanization (1-10)" required min="1" max="10" step="1">
+    <p>Rate the level of urbanization and its effect on water flow. A higher score means more urbanization.</p>
+</div>
+
+<!-- Climate Change -->
+<div class="form-group">
+    <label for="climate-change">Climate Change</label>
+    <input type="number" id="climate-change" name="Climate Change" class="form-input" placeholder="Assess the effect of climate change (1-10)" required min="1" max="10" step="1">
+    <p>Assess the effect of climate change in the area. A higher score indicates greater impact.</p>
+</div>
+
+<!-- Dams Quality -->
+<div class="form-group">
+    <label for="dams-quality">Dams Quality</label>
+    <input type="number" id="dams-quality" name="Dams Quality" class="form-input" placeholder="Rate the quality of dams (1-10)" required min="1" max="10" step="1">
+    <p>Rate the structural integrity and management of dams. A higher score indicates better quality.</p>
+</div>
+
+<!-- Siltation -->
+<div class="form-group">
+    <label for="siltation">Siltation</label>
+    <input type="number" id="siltation" name="Siltation" class="form-input" placeholder="Evaluate siltation in water bodies (1-10)" required min="1" max="10" step="1">
+    <p>Evaluate the extent of silt buildup in water bodies. A higher score means more siltation.</p>
+</div>
+
+<!-- Agricultural Practices -->
+<div class="form-group">
+    <label for="agricultural-practices">Agricultural Practices</label>
+    <input type="number" id="agricultural-practices" name="Agricultural Practices" class="form-input" placeholder="Rate farming practices (1-10)" required min="1" max="10" step="1">
+    <p>Rate farming practices and their impact on flooding. A higher score means worse practices.</p>
+</div>
+
+<!-- Encroachments -->
+<div class="form-group">
+    <label for="encroachments">Encroachments</label>
+    <input type="number" id="encroachments" name="Encroachments" class="form-input" placeholder="Rate impact of encroachments (1-10)" required min="1" max="10" step="1">
+    <p>Rate the impact of illegal constructions on flood risk. A higher value indicates more encroachments.</p>
+</div>
+
+<!-- Ineffective Disaster Preparedness -->
+<div class="form-group">
+    <label for="disaster-preparedness">Ineffective Disaster Preparedness</label>
+    <input type="number" id="disaster-preparedness" name="Ineffective Disaster Preparedness" class="form-input" placeholder="Rate disaster preparedness (1-10)" required min="1" max="10" step="1">
+    <p>Rate the region's disaster readiness. A higher score indicates poor preparedness.</p>
+</div>
+
+<!-- Drainage Systems -->
+<div class="form-group">
+    <label for="drainage-systems">Drainage Systems</label>
+    <input type="number" id="drainage-systems" name="Drainage Systems" class="form-input" placeholder="Rate drainage systems' efficiency (1-10)" required min="1" max="10" step="1">
+    <p>Rate the efficiency of the drainage infrastructure. A higher score means better efficiency.</p>
+</div>
+
+<!-- Coastal Vulnerability -->
+<div class="form-group">
+    <label for="coastal-vulnerability">Coastal Vulnerability</label>
+    <input type="number" id="coastal-vulnerability" name="Coastal Vulnerability" class="form-input" placeholder="Rate coastal vulnerability (1-10)" required min="1" max="10" step="1">
+    <p>Rate the vulnerability of coastal areas to flooding. A higher value means higher vulnerability.</p>
+</div>
+
+<!-- Landslides -->
+<div class="form-group">
+    <label for="landslides">Landslides</label>
+    <input type="number" id="landslides" name="Landslides" class="form-input" placeholder="Assess landslide risk (1-10)" required min="1" max="10" step="1">
+    <p>Assess the risk and impact of landslides. A higher score means greater risk.</p>
+</div>
+
+<!-- Watersheds -->
+<div class="form-group">
+    <label for="watersheds">Watersheds</label>
+    <input type="number" id="watersheds" name="Watersheds" class="form-input" placeholder="Evaluate watershed management (1-10)" required min="1" max="10" step="1">
+    <p>Evaluate the condition and management of watersheds. A higher score means better management.</p>
+</div>
+
+<!-- Deteriorating Infrastructure -->
+<div class="form-group">
+    <label for="infrastructure">Deteriorating Infrastructure</label>
+    <input type="number" id="infrastructure" name="Deteriorating Infrastructure" class="form-input" placeholder="Rate infrastructure condition (1-10)" required min="1" max="10" step="1">
+    <p>Rate the condition of infrastructure. A higher score indicates worse infrastructure.</p>
+</div>
+
+<!-- Population Score -->
+<div class="form-group">
+    <label for="population">Population Score</label>
+    <input type="number" id="population" name="Population Score" class="form-input" placeholder="Rate the population density (1-10)" required min="1" max="10" step="1">
+    <p>Rate the population density and its impact on flood risk. A higher score indicates greater density.</p>
+</div>
+
+<!-- Wetland Loss -->
+<div class="form-group">
+    <label for="wetland-loss">Wetland Loss</label>
+    <input type="number" id="wetland-loss" name="Wetland Loss" class="form-input" placeholder="Rate the loss of wetlands (1-10)" required min="1" max="10" step="1">
+    <p>Rate the loss of wetlands in the area. A higher score indicates more wetland loss.</p>
+</div>
+
+<!-- Inadequate Planning -->
+<div class="form-group">
+    <label for="planning">Inadequate Planning</label>
+    <input type="number" id="planning" name="Inadequate Planning" class="form-input" placeholder="Rate planning effectiveness (1-10)" required min="1" max="10" step="1">
+    <p>Rate the effectiveness of planning and mitigation efforts. A higher score indicates inadequate planning.</p>
+</div>
+
+<!-- Political Factors -->
+<div class="form-group">
+    <label for="political-factors">Political Factors</label>
+    <input type="number" id="political-factors" name="Political Factors" class="form-input" placeholder="Rate the impact of political factors (1-10)" required min="1" max="10" step="1">
+    <p>Rate the influence of political factors on flood risk. A higher score means greater influence.</p>
+</div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-button">Submit Evaluation</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("flood-risk-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+
+    // Collect form data
+    const formData = new FormData(event.target);
+    const formValues = {};
+
+    // Convert FormData to JSON object and map to expected feature names
+    formData.forEach((value, key) => {
+        formValues[key] = parseFloat(value); // Convert to numbers
+    });
+
+    console.log("Form values sent to API:", formValues); // Debugging
+
+    try {
+        // Send POST request to the prediction API
+        const response = await fetch('http://127.0.0.1:5000/predict_flood', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formValues), // Send form data as JSON
+        });
+
+        if (response.ok) {
+            // Parse and handle successful response
+            const data = await response.json();
+            console.log("Response from API:", data); // Debugging
+
+            // Navigate to results page with prediction data in query string
+            const resultParams = new URLSearchParams({
+                flood_probability: data.flood_probability,
+                lower_bound: data.confidence_interval.lower_bound,
+                upper_bound: data.confidence_interval.upper_bound,
+            }).toString();
+            window.location.href = `/result?${resultParams}`;
+        } else {
+            // Handle server errors
+            const errorData = await response.json();
+            console.error("API Error:", errorData); // Debugging
+            alert(`Error: ${errorData.error}`);
+        }
+    } catch (error) {
+        // Handle network or other unexpected errors
+        console.error("Unexpected error:", error); // Debugging
+        alert(`An unexpected error occurred: ${error.message}`);
+    }
+});
+
+
+    </script>
+</body>
+</html>
