@@ -76,7 +76,9 @@ Flood predictions are made using machine learning algorithms trained on a variet
 ---
 
 ## 🌩️ Robust Model and Cloud Hosting
-C:\xampp\htdocs\user_history\images\robust_model.jpg
+![robust_model](https://github.com/user-attachments/assets/4b247b89-aad2-43f4-b0cf-549e6a42d376)
+
+
 
 ### Model Accuracy
 Our local model achieved an outstanding accuracy of **98%**, demonstrating its effectiveness in predicting flood risks.
@@ -107,7 +109,8 @@ The system uses a containerized infrastructure to streamline development and dep
    - `evansjunior/flood-prediction-app:latest`: The main application image.
    - `evansjunior/user-prediction-app:latest`: The user tracking application image.
 
-    C:\xampp\htdocs\user_history\images\architecture.png
+![architecture](https://github.com/user-attachments/assets/a4830b9d-2576-41f1-b0e3-604c9e197d3a)
+
 
 ---
 
@@ -151,16 +154,20 @@ We performed rigorous testing to ensure the application runs smoothly and meets 
 Here are some snapshots of the testing process:
 
 1. **Qodo Gen Test Suite**:  
-   C:\xampp\htdocs\user_history\images\qodo_test_suite.jpg
+![qodo_test_suite](https://github.com/user-attachments/assets/d1223629-2cb4-4e2f-a471-7c0fe327f263)
 
-   C:\xampp\htdocs\user_history\images\qodo_test_suite2.jpg
 
-   C:\xampp\htdocs\user_history\images\qodo_test_suite3.jpg
+![qodo_test_suite2](https://github.com/user-attachments/assets/3882edac-8940-4dea-bacf-edf930eabfbc)
+
+
+![qodo_test_suite3](https://github.com/user-attachments/assets/81554a9e-47b3-4f63-b15a-5cf15f11ffbc)
+
    
    *Detailed output from the Qodo Gen Test Suite highlighting successful API responses.*
 
 3. **Postman Testing**:  
-  C:\xampp\htdocs\user_history\images\postman_api_testing.jpg
+ ![postman_api_testing](https://github.com/user-attachments/assets/0a73bcf1-5a64-4c18-b227-fe4a9714f390)
+
    *Validation of API endpoints with expected responses and latency checks.*
 
 ---
