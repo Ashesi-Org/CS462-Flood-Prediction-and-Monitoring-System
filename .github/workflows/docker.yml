@@ -1,12 +1,18 @@
 <<<<<<< HEAD
+name: Docker Compose CI/CD
+=======
+<<<<<<< HEAD
 name: Deploy Docker Compose
 =======
 name: Docker Compose CI/CD
 >>>>>>> b36831172537fc728081297df0e16a8108f2a883
+>>>>>>> 42fa128fc2baa9d0cb0a6184d0166457365ed85d
 
 on:
   push:
     branches:
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
       - main  # Deploy on push to main branch
 
@@ -33,6 +39,7 @@ jobs:
         docker-compose up -d --build  # Recreate containers
         EOF
 =======
+>>>>>>> 42fa128fc2baa9d0cb0a6184d0166457365ed85d
       - main
 
 jobs:
@@ -64,4 +71,7 @@ jobs:
             --name flood-prediction \
             --image <your-acr-name>.azurecr.io/main-frontend:latest \
             --ports 5002
+<<<<<<< HEAD
+=======
 >>>>>>> b36831172537fc728081297df0e16a8108f2a883
+>>>>>>> 42fa128fc2baa9d0cb0a6184d0166457365ed85d

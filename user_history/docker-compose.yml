@@ -23,6 +23,8 @@ services:
       timeout: 5s
       retries: 5
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
       
   prometheus:
     image: prom/prometheus
@@ -34,6 +36,7 @@ services:
     networks:
       - app-network
 =======
+>>>>>>> 42fa128fc2baa9d0cb0a6184d0166457365ed85d
   prometheus:
     image: prom/prometheus
     volumes:
@@ -46,4 +49,7 @@ services:
       DATA_SOURCE_NAME: root:6972dk@(db:3306)/Weatherman
     ports:
       - "9104:9104"
+<<<<<<< HEAD
+=======
 >>>>>>> b36831172537fc728081297df0e16a8108f2a883
+>>>>>>> 42fa128fc2baa9d0cb0a6184d0166457365ed85d

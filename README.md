@@ -1,8 +1,13 @@
-# 🌊 Flood Prediction and Monitoring System
 
-The **Flood Prediction and Monitoring System** is a cloud-based web application designed to help predict and monitor flood risks in vulnerable areas, particularly in flood-prone regions of Ghana, like Accra. This system provides crucial insights that can help individuals, government agencies, and developers take proactive measures to mitigate the impacts of flooding. Flooding is a major issue in urban areas, often resulting in property damage, economic loss, and even loss of life. This project aims to address these issues by offering accessible, data-driven flood risk assessments.
+---
 
-## 🚀 Features
+# **🌊 Flood Prediction and Monitoring System**
+
+The **Flood Prediction and Monitoring System** is a cloud-based web application designed to help predict and monitor flood risks in vulnerable areas, particularly in flood-prone regions of Ghana, like Accra. This system provides crucial insights to help individuals, government agencies, and developers take proactive measures to mitigate the impacts of flooding. Flooding in urban areas often leads to property damage, economic loss, and even loss of life. This project aims to address these challenges by offering accessible, data-driven flood risk assessments.
+
+---
+
+## **🚀 Features**
 
 - **Data Collection**: Real-time collection of rainfall, historical flood events, and environmental factors.
 - **Predictive Analysis**: Uses environmental data to calculate flood risks based on recent or forecasted rainfall levels.
@@ -11,18 +16,51 @@ The **Flood Prediction and Monitoring System** is a cloud-based web application 
 
 ---
 
-## 🔍 How It Works
+## **🔍 How It Works**
 
-The Flood Prediction and Monitoring System operates by:
+The **Flood Prediction and Monitoring System** operates by:
 
 1. **Data Aggregation**: Gathering data from various sources, including rainfall measurements, past flood events, and geographic data.
 2. **Predictive Modeling**: Using machine learning models to analyze collected data and predict the likelihood of a flood in specific areas.
 3. **User Input and Analysis**: Allows users to input specific location data for customized flood risk insights.
 4. **Visualization and Monitoring**: Displays real-time and forecasted flood risk levels for selected regions through interactive charts and maps.
 
-## 🌐 Installation
+---
 
-Follow these steps to set up the Flood Prediction and Monitoring System locally:
+## **🛠️ Technologies Used**
+
+- **Frontend**: HTML, CSS, JavaScript for interactive data visualization.
+- **Backend**: Python with Flask to handle web application logic and data processing.
+- **Machine Learning**: Scikit-Learn, TensorFlow for predictive modeling.
+- **Database**: PostgreSQL for data storage and retrieval.
+- **Cloud Services**: AWS or Google Cloud for real-time data access and scalability.
+- **Container Infrastructure**: Docker for containerized deployment of the application.
+
+---
+
+## **🏗️ Infrastructure Setup**
+
+### **Container Infrastructure**
+
+The system uses a containerized infrastructure to streamline development and deployment. Below is the container setup:
+
+1. **Containers**:
+   - `user_tracking` container for logging and tracking user activity.
+   - `database` container for managing flood prediction data.
+   - `mwin7/landingpage` for the frontend interface.
+   - `mwin7/backendlogin` for secure user login management.
+
+2. **Images Created**:
+   - `evansjunior/flood-prediction-app:latest`: The main application image.
+   - `evansjunior/user-prediction-app:latest`: The user tracking application image.
+
+      ![Architecture](images/architecture.png) 
+
+---
+
+## **🌐 Installation**
+
+Follow these steps to set up the **Flood Prediction and Monitoring System** locally:
 
 1. **Clone the Repository**:
     ```bash
@@ -44,72 +82,62 @@ Follow these steps to set up the Flood Prediction and Monitoring System locally:
     ```
 
 5. **Access the App**:
-    - Visit `http://localhost:5000` to view and interact with the Flood Prediction and Monitoring System.
-  
-
-
-## Project Management 
-We are using [clickUp] https://app.clickup.com/9012511042/v/b/4-90122116904-2 as our project mangement tool to organize task and track progress. Below are details of the setup:
-### Task Board Overview
-![Task Board Overview]
-<img width="954" alt="image" src="https://github.com/user-attachments/assets/ad065aa5-bacf-41fe-a9c9-5bb010f5ed1d">
-
-### Workflow  
-Our workflow follows the Agile methodology, divided into milestones to track progress.  
-1. **Milestone Planning**: Each milestone focuses on a specific deliverable. Tasks are created, assigned to team members, and tracked in the project management tool.  
-2. **Daily Updates**: Standups via [communication tool, e.g., whatsapp] to sync on progress.  
-3. **Task Tracking**: We use ClickUp boards to maintain task progress from "To Do" to "In Progress" and "Done."
-
-
-
-## 🛠️ Technologies Used
-
-- **Frontend**: HTML, CSS, JavaScript for interactive data visualization.
-- **Backend**: Python with Flask to handle web application logic and data processing.
-- **Machine Learning**: Scikit-Learn, TensorFlow for predictive modeling.
-- **Database**: PostgreSQL for data storage and retrieval.
-- **Cloud Services**: AWS or Google Cloud for real-time data access and scalability.
+    - Visit `http://localhost:7000` to view and interact with the Flood Prediction and Monitoring System.
 
 ---
 
-## 📊 Data Sources and Collection
+## **🧪 Testing**
 
+We performed rigorous testing to ensure the application runs smoothly and meets all functional requirements:
+
+- **Testing Suite**: Utilized the **Qodo Gen Test Suite** for automated tests of APIs and containerized services.
+- **API Testing**: Conducted thorough API response testing using **Postman** to validate endpoints and ensure accurate data handling.
+
+### **Testing Results**
+
+Here are some snapshots of the testing process:
+
+1. **Qodo Gen Test Suite**:  
+   ![Qodo Gen Test Suite](images/qodo_test_suite.jpg) 
+
+   ![Qodo Gen Test Suite](images/qodo_test_suite2.jpg) 
+
+   ![Qodo Gen Test Suite](images/qodo_test_suite3.jpg) 
+   *Detailed output from the Qodo Gen Test Suite highlighting successful API responses.*
+
+2. **Postman Testing**:  
+   ![Postman Testing](images/postman_api_testing.jpg)  
+   *Validation of API endpoints with expected responses and latency checks.*
+
+
+## **📋Limitations and Future Improvements**
+
+Latency: There is some latency when retrieving API responses. Future work will involve optimizing API response times to ensure seamless user experience.
+Expanded Data Sources: Adding more diverse data sources for better prediction accuracy.
+Real-Time Notifications: Implementing real-time alert systems for high-risk flood zones.
+
+## **📊Data Sources and Collection**
 The system relies on multiple data sources to provide accurate flood predictions:
 
-- **Weather Data**: Real-time and historical rainfall data from government agencies and APIs like OpenWeather or Meteostat.
-- **Flood History**: Data on past flooding events in the targeted regions.
-- **Geographical Information**: Data on elevation, topography, and drainage systems from sources like Google Maps API or GIS databases.
+Weather Data: Real-time and historical rainfall data from government agencies and APIs like OpenWeather or Meteostat.
+Flood History: Data on past flooding events in the targeted regions.
+Geographical Information: Data on elevation, topography, and drainage systems from sources like Google Maps API or GIS databases.
 
-## 📈 Machine Learning and Modeling
-
+## **📈Machine Learning and Modeling**
 Flood predictions are made using machine learning algorithms trained on a variety of flood-related environmental data. Models include:
 
-- **Logistic Regression**: Used for binary classification of flood risk.
-- **Random Forest**: Used for assessing flood risk probability based on environmental factors.
-- **Recurrent Neural Network (RNN)**: For time-series forecasting of rainfall and its potential impacts on flood risks.
+Logistic Regression: Used for binary classification of flood risk.
+Random Forest: Used for assessing flood risk probability based on environmental factors.
+Recurrent Neural Network (RNN): For time-series forecasting of rainfall and its potential impacts on flood risks.
 
-## 💻 Usage Guide
-
-1. **Input Location Data**: Enter the region or specific area you’d like to monitor for flood risk.
-2. **View Predictions**: The system provides a risk level assessment based on recent rainfall data and historical patterns.
-3. **Access Visualizations**: Users can explore visualized data insights like predicted rainfall, flood probabilities, and other risk factors.
-
-## 🧪 Example Scenarios
-
-- **Real Estate Developer**: Developers can assess the flood risk of an area before investing.
-- **Government Agency**: Authorities can use the system to monitor high-risk zones and allocate resources effectively.
-- **Local Residents**: Individuals can stay informed about the flood risk level in their area, helping them take precautionary measures.
-
-
-## 👥 Contributing
-
+## **👥Contributing**
 We welcome contributions to improve the Flood Prediction and Monitoring System. Here's how you can help:
 
 1. **Fork the Repository**: Create a personal fork of the repository.
 2. **Clone Your Fork**:
    ```bash
    git clone https://github.com/Evans-Junior/FloodPredictionMonitoring.git
-
+   ```
 
 3. **Create a Branch**:
     ```bash
@@ -131,14 +159,16 @@ We welcome contributions to improve the Flood Prediction and Monitoring System. 
 
 ---
 
-## 📝 License
+## **📝 License**
 
 This project is licensed under the Ashesi License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 📧 Contact Information
+## **📧 Contact Information**
 
 For further inquiries or support, contact us via email:
 
 **kwakukumi14@gmail.com**
+
+---

@@ -1,6 +1,15 @@
+<<<<<<< HEAD
+Flask
+SQLAlchemy
+prometheus-client
+python-dotenv
+pymysql
+cryptography
+=======
 streamlit
 requests
 pickle
 joblib
 numpy
 sklearn
+>>>>>>> 42fa128fc2baa9d0cb0a6184d0166457365ed85d
